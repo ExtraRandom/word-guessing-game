@@ -1,4 +1,7 @@
-export const GAME_TITLE = 'SOUP WORDLE'
+var game_name = 'Soup Wordle'
+
+export const GAME_TITLE = game_name.toUpperCase()
+export const GAME_TITLE_SHARE = game_name
 
 export const WIN_MESSAGES = ['Great Job!', 'Awesome', 'Well done!']
 export const GAME_COPIED_MESSAGE = 'Game copied to clipboard'

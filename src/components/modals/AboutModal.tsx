@@ -12,8 +12,8 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
         This is an open source wordle clone for Soup:{' '} <br></br>
         <a href="https://github.com/ExtraRandom/word-guessing-game" className="underline font-bold">
           Check out the code here
-        </a>{' '}<br></br>
-        Or{' '}<br></br>
+        </a>{' '}<br />
+        Or{' '}<br />
         <a href="https://github.com/hannahcode/word-guessing-game" className="underline font-bold">
           Check out the original project here
         </a>.{' '}

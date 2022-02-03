@@ -141,11 +141,14 @@ function App() {
       setGuesses([...guesses, currentGuess])
       setCurrentGuess('')
 
+      
       if (winningWord) {
+        /*  // doesn't work
         console.log(guesses)
 
         var grid = document.getElementById('grid')
         if (grid) {
+          var row_num = guesses.length
           var row = grid.children[guesses.length]
           console.log('length:', guesses.length)
           console.log(grid)
@@ -153,12 +156,13 @@ function App() {
 
           for (let index = 0; index < 5; index++) {
             console.log('ye')
-            row.children[index].classList.add('animation_win')
+            grid.children[row_num].children[index].classList.add('animation_win')
             console.log(row.children[index])
           }
 
           // row.classList.add("animation_win")
         }
+        */
 
         setStats(addStatsForCompletedGame(stats, guesses.length))
         return setIsGameWon(true)
@@ -174,7 +178,7 @@ function App() {
     <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div className="flex w-80 mx-auto items-center mb-8 mt-1">
         <QuestionMarkCircleIcon
-          className="h-6 w-6 cursor-pointer dark:stroke-white"
+          className="h-6 w-6 mr-1 cursor-pointer dark:stroke-white"
           onClick={() => setIsInfoModalOpen(true)}
         />
         <CodeIcon

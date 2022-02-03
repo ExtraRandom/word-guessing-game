@@ -18,6 +18,22 @@
   align-items: center;
 }
 
+/*
+@media (min-width: 375px) {
+  .tile {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .tile {
+    width: 6rem;
+    height: 6rem;
+  }
+}
+*/
+
 .key {
   color: white;
   font-weight: 700;
@@ -54,7 +70,7 @@
 }
 
 #game-title-centre {
-  margin-left: 4rem;
+  margin-left: 3rem;
 }
 
 .guess_correct {
@@ -124,17 +140,17 @@
 */
 
 .animation_flip {
-  animation: flip ease-in-out forwards;
+  animation: aflip ease-in-out forwards;
   /* animation-duration: 250ms; */
   animation-duration: 0.5s;
 }
 
 .animation_win {
-  animation-name: bounce;
+  animation: bounce linear;
   animation-duration: 1000ms;
 }
 
-@keyframes flip {
+@keyframes aflip {
   0% {
     background: #ffffff0d;
     /*background: transparent;*/
