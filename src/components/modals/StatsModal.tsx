@@ -12,6 +12,8 @@ import {
   SHARE_TEXT,
 } from '../../constants/strings'
 
+import { ShareIcon } from '@heroicons/react/outline'
+
 type Props = {
   isOpen: boolean
   handleClose: () => void
@@ -65,13 +67,13 @@ export const StatsModal = ({
           </div>
           <button
             type="button"
-            className="mt-2 w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
+            className="key_correct items-center flex mt-2 w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:text-sm"
             onClick={() => {
               shareStatus(guesses, isGameLost)
               handleShare()
             }}
           >
-            {SHARE_TEXT}
+            {SHARE_TEXT} <ShareIcon className='h-6 w-6 ml-3'/>
           </button>
         </div>
       )}

@@ -1,7 +1,8 @@
 import {
-  InformationCircleIcon,
+  //InformationCircleIcon,
+  QuestionMarkCircleIcon,
   ChartBarIcon,
-  SunIcon,
+  //SunIcon,
 } from '@heroicons/react/outline'
 import { useState, useEffect } from 'react'
 import { Alert } from './components/alerts/Alert'
@@ -14,7 +15,7 @@ import {
   GAME_TITLE,
   WIN_MESSAGES,
   GAME_COPIED_MESSAGE,
-  ABOUT_GAME_MESSAGE,
+  // ABOUT_GAME_MESSAGE,
   NOT_ENOUGH_LETTERS_MESSAGE,
   WORD_NOT_FOUND_MESSAGE,
   CORRECT_WORD_MESSAGE,
@@ -31,9 +32,10 @@ import './App.css'
 const ALERT_TIME_MS = 2000
 
 function App() {
+  /*
   const prefersDarkMode = window.matchMedia(
     '(prefers-color-scheme: dark)'
-  ).matches
+  ).matches*/
 
   const [currentGuess, setCurrentGuess] = useState('')
   const [isGameWon, setIsGameWon] = useState(false)
@@ -43,13 +45,13 @@ function App() {
   const [isStatsModalOpen, setIsStatsModalOpen] = useState(false)
   const [isWordNotFoundAlertOpen, setIsWordNotFoundAlertOpen] = useState(false)
   const [isGameLost, setIsGameLost] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(
+  /*const [isDarkMode, setIsDarkMode] = useState(
     localStorage.getItem('theme')
       ? localStorage.getItem('theme') === 'dark'
       : prefersDarkMode
       ? true
       : false
-  )
+  )*/
   const [successAlert, setSuccessAlert] = useState('')
   const [guesses, setGuesses] = useState<string[]>(() => {
     const loaded = loadGameStateFromLocalStorage()
@@ -69,17 +71,19 @@ function App() {
   const [stats, setStats] = useState(() => loadStats())
 
   useEffect(() => {
-    if (isDarkMode) {
+    if (true) {
+      // isDarkMode
       document.documentElement.classList.add('dark')
     } else {
       document.documentElement.classList.remove('dark')
     }
-  }, [isDarkMode])
+  }) // [isDarkMode]
 
+  /*
   const handleDarkMode = (isDark: boolean) => {
     setIsDarkMode(isDark)
     localStorage.setItem('theme', isDark ? 'dark' : 'light')
-  }
+  }*/
 
   useEffect(() => {
     saveGameStateToLocalStorage({ guesses, solution })
@@ -137,6 +141,24 @@ function App() {
       setCurrentGuess('')
 
       if (winningWord) {
+        console.log(guesses)
+
+        var grid = document.getElementById('grid')
+        if (grid) {
+          var row = grid.children[guesses.length]
+          console.log('length:', guesses.length)
+          console.log(grid)
+          console.log(row)
+
+          for (let index = 0; index < 5; index++) {
+            console.log('ye')
+            row.children[index].classList.add('animation_win')
+            console.log(row.children[index])
+          }
+
+          // row.classList.add("animation_win")
+        }
+
         setStats(addStatsForCompletedGame(stats, guesses.length))
         return setIsGameWon(true)
       }
@@ -147,19 +169,19 @@ function App() {
       }
     }
   }
-
   return (
-    <div className="py-8 max-w-7xl mx-auto sm:px-6 lg:px-8">
-      <div className="flex w-80 mx-auto items-center mb-8 mt-12">
-        <h1 className="text-xl grow font-bold dark:text-white">{GAME_TITLE}</h1>
-        <SunIcon
-          className="h-6 w-6 cursor-pointer dark:stroke-white"
-          onClick={() => handleDarkMode(!isDarkMode)}
-        />
-        <InformationCircleIcon
+    <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
+      <div className="flex w-80 mx-auto items-center mb-8 mt-1">
+        <QuestionMarkCircleIcon
           className="h-6 w-6 cursor-pointer dark:stroke-white"
           onClick={() => setIsInfoModalOpen(true)}
         />
+        <h1
+          id="game-title-centre"
+          className="text-xl grow font-bold dark:text-white"
+        >
+          {GAME_TITLE}
+        </h1>
         <ChartBarIcon
           className="h-6 w-6 cursor-pointer dark:stroke-white"
           onClick={() => setIsStatsModalOpen(true)}
@@ -192,15 +214,6 @@ function App() {
         isOpen={isAboutModalOpen}
         handleClose={() => setIsAboutModalOpen(false)}
       />
-
-      <button
-        type="button"
-        className="mx-auto mt-8 flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 select-none"
-        onClick={() => setIsAboutModalOpen(true)}
-      >
-        {ABOUT_GAME_MESSAGE}
-      </button>
-
       <Alert message={NOT_ENOUGH_LETTERS_MESSAGE} isOpen={isNotEnoughLetters} />
       <Alert
         message={WORD_NOT_FOUND_MESSAGE}

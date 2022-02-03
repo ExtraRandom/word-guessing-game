@@ -2,21 +2,190 @@
 @tailwind components;
 @tailwind utilities;
 
-.cell-animation {
-  animation: revealCharCell linear;
-  animation-duration: 0.15s;
+.tile {
+  background: transparent;
+  width: 3.5rem;
+  height: 3.5rem;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  margin-left: 0.125rem;
+  margin-right: 0.125rem;
+  /* font-size: 1.125rem; */
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes revealCharCell {
+.key {
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1rem;
+  border-radius: 0.25rem;
+  justify-content: center;
+  margin-left: 0.125rem;
+  margin-right: 0.125rem;
+  align-items: center;
+  display: flex;
+}
+
+.letter {
+  color: white;
+  animation: pop 0.2s ease-out;
+  animation-delay: 0s !important;
+}
+
+.tile:nth-child(1) {
+  animation-delay: 0s;
+}
+.tile:nth-child(2) {
+  animation-delay: 0.15s;
+}
+.tile:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.tile:nth-child(4) {
+  animation-delay: 0.45s;
+}
+.tile:nth-child(5) {
+  animation-delay: 0.6s;
+}
+
+#game-title-centre {
+  margin-left: 4rem;
+}
+
+.guess_correct {
+  --color: #6aaa64;
+  /* background: #6aaa64; */
+}
+
+.guess_present {
+  --color: #b59f3b;
+  /* background: #b59f3b; */
+}
+
+.guess_absent {
+  --color: #3a3a3c;
+  /*background: #3a3a3c;*/
+}
+
+.guess_none {
+  background: #ffffff0d;
+  /*border: 2px solid #3a3a3c;*/
+}
+
+.key_generic {
+  background: #818384;
+}
+/*
+.key_generic:hover {
+  background: #6e6f70;
+}
+
+.key_generic:active {
+    background: #5a5b5c;
+}
+*/
+
+.key_correct {
+  background: #538d4e;
+}
+/*
+.key_correct:hover {
+  background: #4a7e46;
+}
+.key_correct:active {
+  background: #406d3d;
+}
+*/
+
+.key_present {
+  background: #b59f3b;
+}
+/*
+.key_present:hover {
+  background: #a38f35;
+}
+.key_present:active {
+  background: #8d7c2e;
+}
+*/
+
+.key_absent {
+  background: #3a3a3c;
+}
+/*
+.key_absent:hover {
+  background: #3a3a3c;
+}
+*/
+
+.animation_flip {
+  animation: flip ease-in-out forwards;
+  /* animation-duration: 250ms; */
+  animation-duration: 0.5s;
+}
+
+.animation_win {
+  animation-name: bounce;
+  animation-duration: 1000ms;
+}
+
+@keyframes flip {
   0% {
-    transform: scale(1);
+    background: #ffffff0d;
+    /*background: transparent;*/
+    transform: rotateX(0);
   }
-
   50% {
-    transform: scale(1.1);
+    background: #ffffff0d;
+    /*background: transparent;*/
+    transform: rotateX(-90deg);
   }
-
+  50.001% {
+    background: var(--color);
+  }
   100% {
-    transform: scale(1);
+    transform: rotateX(0);
+    background: var(--color);
   }
+}
+
+@keyframes pop {
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  20% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+  80% {
+    transform: translateY(2px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.modal {
+  background: #121213 !important;
+}
+
+.overlay {
+  background: #00000080 !important;
 }

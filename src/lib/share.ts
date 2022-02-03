@@ -3,10 +3,15 @@ import { solutionIndex } from './words'
 import { GAME_TITLE } from '../constants/strings'
 
 export const shareStatus = (guesses: string[], lost: boolean) => {
-  navigator.clipboard.writeText(
-    `${GAME_TITLE} ${solutionIndex} ${lost ? 'X' : guesses.length}/6\n\n` +
-      generateEmojiGrid(guesses)
-  )
+  var copy_text = `${GAME_TITLE} ${solutionIndex} ${lost ? 'X' : guesses.length}/6\n\n` + generateEmojiGrid(guesses)
+
+  navigator.clipboard.writeText(copy_text)
+  .then(() => {
+    console.log("copied")
+  })
+  .catch(() => {
+    console.log("not copied")
+  })
 }
 
 export const generateEmojiGrid = (guesses: string[]) => {
@@ -22,7 +27,7 @@ export const generateEmojiGrid = (guesses: string[]) => {
             case 'present':
               return '🟨'
             default:
-              return '⬜'
+              return '⬛'
           }
         })
         .join('')
