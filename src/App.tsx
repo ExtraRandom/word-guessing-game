@@ -2,6 +2,7 @@ import {
   //InformationCircleIcon,
   QuestionMarkCircleIcon,
   ChartBarIcon,
+  CodeIcon,
   //SunIcon,
 } from '@heroicons/react/outline'
 import { useState, useEffect } from 'react'
@@ -175,6 +176,10 @@ function App() {
         <QuestionMarkCircleIcon
           className="h-6 w-6 cursor-pointer dark:stroke-white"
           onClick={() => setIsInfoModalOpen(true)}
+        />
+        <CodeIcon
+          className="h-6 w-6 cursor-pointer dark:stroke-white"
+          onClick={() => setIsAboutModalOpen(true)}
         />
         <h1
           id="game-title-centre"

@@ -9,13 +9,14 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
   return (
     <BaseModal title="About" isOpen={isOpen} handleClose={handleClose}>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        This is an open source word guessing game -{' '}
-        <a
-          href="https://github.com/hannahcode/GAME"
-          className="underline font-bold"
-        >
-          check out the code here
-        </a>{' '}
+        This is an open source wordle clone for Soup:{' '} <br></br>
+        <a href="https://github.com/ExtraRandom/word-guessing-game" className="underline font-bold">
+          Check out the code here
+        </a>{' '}<br></br>
+        Or{' '}<br></br>
+        <a href="https://github.com/hannahcode/word-guessing-game" className="underline font-bold">
+          Check out the original project here
+        </a>.{' '}
       </p>
     </BaseModal>
   )

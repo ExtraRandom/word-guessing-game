@@ -1,6 +1,6 @@
 {
-  "short_name": "Game",
-  "name": "Game",
+  "short_name": "Soup Wordle",
+  "name": "Soup Wordle - A Wordle clone for Soup",
   "icons": [
     {
       "src": "favicon.ico",
