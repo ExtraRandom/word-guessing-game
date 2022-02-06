@@ -14,7 +14,7 @@ export const AboutModal = ({ isOpen, handleClose }: Props) => {
           Check out the code here
         </a>{' '}<br />
         Or{' '}<br />
-        <a href="https://github.com/hannahcode/word-guessing-game" className="underline font-bold">
+        <a href="https://github.com/cwackerfuss/word-guessing-game" className="underline font-bold">
           Check out the original project here
         </a>.{' '}
       </p>
